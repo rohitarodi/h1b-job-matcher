@@ -1,0 +1,16 @@
+services:
+  h1b:
+    image: arodirohit/h1b-job-matcher:latest
+    # To build locally instead: comment above and uncomment below
+    # build: .
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    environment:
+      - TRACKER_DB=/data/tracker.db
+    volumes:
+      - tracker_data:/data
+
+volumes:
+  tracker_data:
+    driver: local
